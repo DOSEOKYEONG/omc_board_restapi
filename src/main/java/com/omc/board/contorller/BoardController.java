@@ -3,6 +3,8 @@ package com.omc.board.contorller;
 import com.omc.board.exception.ResourceNotFoundException;
 import com.omc.board.model.Board;
 import com.omc.board.repository.BoardRepository;
+import com.omc.board.service.BoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,10 +15,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/board")
+@RequiredArgsConstructor
 public class BoardController {
-
-    @Autowired
-    private BoardRepository boardRepository;
+    private final BoardService boardService;
+    private final BoardRepository boardRepository;
 
     @GetMapping
     public List<Board> getAllBoardlist(){
